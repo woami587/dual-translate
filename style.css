@@ -1,0 +1,242 @@
+/* ===== 整块译文 ===== */
+.dt-block {
+    border-left: 3.5px solid #4a90d9;
+    margin: 10px 0 4px 0;
+    padding: 8px 14px;
+    background: rgba(74, 144, 217, 0.05);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.93em;
+    line-height: 1.7;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+    overflow-wrap: anywhere; /* 长单词、长链接换行，不撑出屏幕 */
+}
+.dt-block:hover { opacity: 1; }
+.dt-block p { margin: 0 0 0.5em 0; }
+.dt-block p:last-child { margin-bottom: 0; }
+
+/* ===== 逐段译文 ===== */
+.dt-inline {
+    border-left: 3px solid #4a90d9;
+    margin: 2px 0 12px 0;
+    padding: 3px 12px;
+    background: rgba(74, 144, 217, 0.04);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.86em;
+    line-height: 1.55;
+    opacity: 0.68;
+    transition: opacity 0.2s ease;
+    overflow-wrap: anywhere;
+}
+.dt-inline:hover { opacity: 1; }
+
+/* ===== 翻译中 / 出错 状态行 ===== */
+.dt-status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-left: 3.5px solid #4a90d9;
+    margin: 8px 0 4px 0;
+    padding: 6px 14px;
+    background: rgba(74, 144, 217, 0.05);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.9em;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.dt-status .dt-status-text { flex: 1 1 auto; min-width: 0; }
+.dt-status.dt-loading {
+    font-style: italic;
+    opacity: 0.6;
+}
+.dt-status.dt-error {
+    border-left-color: #d9534f;
+    background: rgba(217, 83, 79, 0.08);
+}
+.dt-status .dt-retry {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 2px 12px;
+    cursor: pointer;
+}
+
+/* ===== 消息按钮 ===== */
+.dt-btn {
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+/* ===== 输入框翻译按钮 ===== */
+#dt_input_btn {
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 3px 8px;
+    opacity: 0.55;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#dt_input_btn:hover {
+    opacity: 1;
+    color: #4a90d9;
+}
+
+/* ===== 脉冲动画 ===== */
+.dt-pulsing {
+    animation: dt-pulse 0.5s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+@keyframes dt-pulse {
+    from { opacity: 0.3; transform: scale(0.95); }
+    to   { opacity: 1;   transform: scale(1.05); }
+}
+
+/* ===== 设置面板 ===== */
+#dt_settings .inline-drawer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+#dt_settings label { margin-top: 4px; font-weight: 500; }
+#dt_settings small { opacity: 0.7; }
+#dt_settings hr { margin: 8px 0; border-color: rgba(128,128,128,0.2); }
+#dt_settings select.text_pole { padding: 6px 8px; }
+
+#dt_custom_languages,
+#dt_google_settings {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#dt_settings .dt-setting-hint {
+    display: block;
+    line-height: 1.5;
+}
+
+#dt_settings .dt-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#dt_settings details > summary {
+    cursor: pointer;
+    font-weight: 500;
+    padding: 4px 0;
+}
+#dt_settings details[open] > summary { margin-bottom: 6px; }
+#dt_settings details > .dt-field,
+#dt_settings details > .dt-setting-hint { margin-top: 6px; }
+
+#dt_cache_stats { overflow-wrap: anywhere; }
+
+/* ===== 手机 / 触屏 =====
+   1000px 是酒馆自己切换到手机布局的宽度；(pointer: coarse) 覆盖大屏触屏设备。
+   下面所有规则都放在媒体查询里，电脑上（宽屏 + 鼠标）完全不受影响。 */
+@media (max-width: 1000px), (pointer: coarse) {
+    /* 设置面板：不允许横向溢出 */
+    #dt_settings,
+    #dt_settings .inline-drawer-content,
+    #dt_settings .dt-field,
+    #dt_settings details {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    #dt_settings input[type="text"],
+    #dt_settings input[type="password"],
+    #dt_settings select,
+    #dt_settings .text_pole {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-height: 44px;
+        font-size: 16px; /* 小于 16px 时 iOS 会在聚焦输入框时自动放大页面 */
+    }
+    #dt_settings .menu_button,
+    #dt_settings input[type="button"] {
+        min-height: 44px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        white-space: normal; /* 按钮文字太长时换行，而不是撑宽 */
+    }
+    #dt_settings input[type="color"] {
+        min-width: 44px;
+        min-height: 44px;
+        width: 64px;
+    }
+    #dt_settings .checkbox_label {
+        min-height: 44px;
+        align-items: center;
+    }
+    #dt_settings .checkbox_label input[type="checkbox"] {
+        min-width: 24px;
+        min-height: 24px;
+    }
+    #dt_settings details > summary {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    #dt_settings .dt-setting-hint,
+    #dt_settings label,
+    #dt_settings summary {
+        overflow-wrap: anywhere;
+    }
+
+    /* 消息和输入框旁边的按钮：点击区域不小于 44×44 */
+    .dt-btn {
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25em;
+    }
+    #dt_input_btn {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0;
+        font-size: 1.35em;
+        opacity: 0.75;
+    }
+    .dt-status .dt-retry {
+        min-height: 44px;
+        min-width: 64px;
+    }
+
+    /* 译文：字号和行距更舒服，长单词、链接自动换行 */
+    .dt-block,
+    .dt-inline,
+    .dt-status {
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+    .dt-block {
+        font-size: 1em;
+        line-height: 1.75;
+        padding: 10px 12px;
+        margin: 10px 0 6px 0;
+    }
+    .dt-inline {
+        font-size: 0.94em;
+        line-height: 1.65;
+        padding: 5px 10px;
+        margin: 3px 0 14px 0;
+    }
+}
+
+/* 没有悬停的设备（手机）：不靠 hover 提亮，译文本身就要清晰可读 */
+@media (hover: none) {
+    .dt-block,
+    .dt-inline { opacity: 0.92; }
+    #dt_input_btn:hover { color: inherit; }
+}

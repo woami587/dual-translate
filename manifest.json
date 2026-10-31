@@ -1,0 +1,11 @@
+{
+    "display_name": "双语对照翻译",
+    "loading_order": 100,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "w & claude",
+    "version": "3.1.0",
+    "auto_update": false
+}

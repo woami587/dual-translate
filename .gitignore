@@ -1,0 +1,23 @@
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 依赖与日志
+node_modules/
+*.log
+
+# 密钥和本地配置（API Key 只应该存在于酒馆的本地设置里，绝不要提交到仓库）
+.env
+.env.*
+secrets*
+settings.json
+
+# 备份文件
+*.bak
+*.orig
